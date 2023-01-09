@@ -103,5 +103,17 @@ def calculate_modularity(G, communities):
     return modularity
 
 
-def clustering():
-    """"""
+def cluster_graph(graph):
+    # Compute the communities in the graph using the greedy modularity algorithm
+    communities = list(nx.greedy_modularity_communities(graph))
+    
+    # Initialize a list to store the clusters
+    clusters = []
+    
+    # Loop through each community
+    for community in communities:
+        # Add the community to the list of clusters
+        clusters.append(list(community))
+    
+    # Return the list of clusters
+    return clusters
