@@ -123,19 +123,20 @@ def random_1_from_distrib_incremental(n, distrib):
     return G
 
 
-def random_1_from_lognormal(n, mean, std, scale):
+def random_1_from_lognormal(n, params):
     """Generate a directed graph with a given number of nodes and a distribution of out-degrees.
     
     Parameters
     ----------
     n : int
         The number of nodes in the graph.
-    mean : float
-        The mean of the log normal distribution.
-    std : float
-        The standard deviation of the log normal distribution.
-    scale : float
-        The scale of the log normal distribution.
+    params : array of float
+        0 (mu) : float
+            The mu param of the log normal distribution.
+        1 (sigma) : float
+            The sigma param of the log normal distribution.
+        2 (scale) : float
+            The scale of the log normal distribution.
         
     Returns
     -------
@@ -143,7 +144,7 @@ def random_1_from_lognormal(n, mean, std, scale):
         The generated directed graph.
     """
     # Set up the log normal distribution using the mean and std
-    distribution = lognorm(mean, std, scale)
+    distribution = lognorm(params[0], params[1], params[2])
     
     # Initialize a directed graph
     G = nx.DiGraph()
